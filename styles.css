@@ -1,0 +1,175 @@
+/* Configuración general */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    background: #f3f6f8;
+
+    color: #1f2937;
+}
+
+
+/* Contenedor principal */
+
+.contenedor {
+    width: min(1000px, 92%);
+
+    margin: 50px auto;
+
+    text-align: center;
+}
+
+
+/* Título */
+
+h1 {
+    margin-bottom: 8px;
+}
+
+.descripcion {
+    color: #667085;
+
+    margin-bottom: 30px;
+}
+
+
+/* Organización de las tarjetas */
+
+.grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+}
+
+
+/* Tarjetas */
+
+.card {
+    background: white;
+
+    padding: 28px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.08);
+
+    text-align: left;
+}
+
+.card h2 {
+    margin-top: 0;
+
+    text-align: center;
+}
+
+
+/* Etiquetas */
+
+label {
+    display: block;
+
+    margin-top: 14px;
+
+    margin-bottom: 6px;
+
+    font-weight: bold;
+}
+
+
+/* Campos */
+
+input {
+    width: 100%;
+
+    padding: 11px;
+
+    border:
+        1px solid #cbd5e1;
+
+    border-radius: 7px;
+}
+
+
+/* Botones */
+
+button {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* Efecto del botón */
+
+button:hover {
+    background: #1d4ed8;
+}
+
+
+/* Área de mensajes */
+
+.message {
+    min-height: 24px;
+
+    margin-top: 16px;
+
+    padding: 10px;
+
+    border-radius: 6px;
+
+    text-align: center;
+
+    font-weight: bold;
+}
+
+
+/* Mensaje exitoso */
+
+.message.success {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+/* Mensaje de error */
+
+.message.error {
+    background: #fee2e2;
+
+    color: #991b1b;
+}
+
+
+/* Adaptación para celulares */
+
+@media (max-width: 700px) {
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+}
