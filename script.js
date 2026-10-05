@@ -195,9 +195,3 @@ loginForm.addEventListener(
 
     }
 );
-
-const API_URL = "http://localhost:3000";
-
-fetch(`${API_URL}/api/register`)
-
-fetch(`${API_URL}/api/login`)

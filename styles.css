@@ -1,175 +1,1363 @@
-/* Configuración general */
-* {
-    box-sizing: border-box;
+/* =====================================================
+   INVEX
+   SISTEMA DE DISEÑO
+===================================================== */
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root {
+
+    --azul: #1769ff;
+
+    --azul-oscuro: #071a33;
+
+    --azul-medio: #0a3d78;
+
+    --azul-claro: #00c8ff;
+
+    --texto: #172236;
+
+    --texto-secundario: #718096;
+
+    --fondo: #f3f7fc;
+
+    --blanco: #ffffff;
+
+    --borde: #dce5ef;
+
+    --verde: #08794f;
+
+    --rojo: #b42318;
+
 }
 
-body {
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
     margin: 0;
 
-    font-family: Arial, sans-serif;
+    padding: 0;
 
-    background: #f3f6f8;
+    box-sizing: border-box;
 
-    color: #1f2937;
 }
 
 
-/* Contenedor principal */
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    min-height: 100vh;
+
+    background: var(--fondo);
+
+    color: var(--texto);
+
+}
+
+
+/* =====================================================
+   FONDO DECORATIVO
+===================================================== */
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: -1;
+
+}
+
+
+.background-circle {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(3px);
+
+}
+
+
+.circle-one {
+
+    width: 520px;
+
+    height: 520px;
+
+    left: -270px;
+
+    top: -270px;
+
+    background: #dce9ff;
+
+}
+
+
+.circle-two {
+
+    width: 520px;
+
+    height: 520px;
+
+    right: -280px;
+
+    bottom: -280px;
+
+    background: #d9f6ff;
+
+}
+
+
+.circle-three {
+
+    width: 220px;
+
+    height: 220px;
+
+    left: 48%;
+
+    top: 5%;
+
+    background: #e7eeff;
+
+}
+
+
+/* =====================================================
+   CONTENEDOR PRINCIPAL
+===================================================== */
 
 .contenedor {
-    width: min(1000px, 92%);
 
-    margin: 50px auto;
+    width: min(1200px, 92%);
 
-    text-align: center;
+    min-height: 700px;
+
+    margin: 45px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        0.9fr 1.1fr;
+
+    background: var(--blanco);
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 70px
+        rgba(8, 34, 70, 0.16);
+
 }
 
 
-/* Título */
+/* =====================================================
+   PANEL DE MARCA
+===================================================== */
 
-h1 {
-    margin-bottom: 8px;
+.panel-marca {
+
+    position: relative;
+
+    padding: 55px;
+
+    overflow: hidden;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            145deg,
+            #06162b 0%,
+            #0a2850 58%,
+            #0755a8 100%
+        );
+
 }
 
-.descripcion {
-    color: #667085;
 
-    margin-bottom: 30px;
+/* Círculo decorativo */
+
+.panel-marca::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 500px;
+
+    right: -290px;
+
+    top: -170px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    border-radius: 50%;
+
 }
 
 
-/* Organización de las tarjetas */
+/* Brillo */
 
-.grid {
+.panel-marca::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+
+    height: 400px;
+
+    left: -130px;
+
+    bottom: -250px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,200,255,0.20),
+            transparent 70%
+        );
+
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 42px;
+
+    font-size: 50px;
+
+    font-weight: 800;
+
+    letter-spacing: -4px;
+
+}
+
+
+.logo strong {
+
+    color: var(--azul-claro);
+
+}
+
+
+/* =====================================================
+   TITULO PRINCIPAL
+===================================================== */
+
+.panel-marca h1 {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 450px;
+
+    margin-bottom: 20px;
+
+    font-size: 29px;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.8px;
+
+}
+
+
+.panel-marca h1 span {
+
+    color: #4ed9ff;
+
+}
+
+
+/* =====================================================
+   DESCRIPCIÓN
+===================================================== */
+
+.panel-marca .descripcion {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 430px;
+
+    margin-bottom: 35px;
+
+    color: #b7c9df;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =====================================================
+   BENEFICIOS
+===================================================== */
+
+.beneficios {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 19px;
+
+}
+
+
+.beneficio {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+
+.icono-beneficio {
+
+    min-width: 45px;
+
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    border-radius: 13px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color: #4ed9ff;
+
+    font-size: 16px;
+
+}
+
+
+.beneficio strong {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 13px;
+
+}
+
+
+.beneficio span {
+
+    display: block;
+
+    color: #9eb1c9;
+
+    font-size: 11px;
+
+}
+
+
+/* =====================================================
+   FRASE FINAL
+===================================================== */
+
+.mensaje-marca {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 42px;
+
+    padding-top: 24px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    color: #9bcaff;
+
+    font-size: 15px;
+
+    font-style: italic;
+
+}
+
+
+.mensaje-marca strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: white;
+
+    font-size: 19px;
+
+    font-style: normal;
+
+}
+
+
+/* =====================================================
+   PANEL DE FORMULARIOS
+===================================================== */
+
+.panel-formularios {
+
     display: grid;
 
     grid-template-columns:
         repeat(2, minmax(0, 1fr));
 
-    gap: 24px;
+    align-items: center;
+
+    gap: 22px;
+
+    padding: 42px;
+
+    background: white;
+
 }
 
 
-/* Tarjetas */
+/* =====================================================
+   TARJETAS
+===================================================== */
 
 .card {
-    background: white;
 
     padding: 28px;
 
-    border-radius: 12px;
+    border:
+        1px solid #edf1f6;
+
+    border-radius: 20px;
+
+    background: white;
 
     box-shadow:
-        0 5px 18px rgba(0, 0, 0, 0.08);
+        0 12px 35px
+        rgba(20,50,90,0.07);
 
-    text-align: left;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
 }
 
-.card h2 {
-    margin-top: 0;
 
-    text-align: center;
+.card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 18px 45px
+        rgba(20,50,90,0.11);
+
 }
 
 
-/* Etiquetas */
+/* =====================================================
+   TITULOS DE FORMULARIO
+===================================================== */
 
-label {
+.titulo-formulario {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 27px;
+
+}
+
+
+.icono-formulario {
+
+    width: 50px;
+
+    height: 50px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e8f1ff,
+            #e2faff
+        );
+
+    color: var(--azul);
+
+    font-size: 19px;
+
+}
+
+
+.titulo-formulario h2 {
+
+    margin: 0 0 4px;
+
+    font-size: 19px;
+
+    line-height: 1.2;
+
+}
+
+
+.titulo-formulario p {
+
+    color: var(--texto-secundario);
+
+    font-size: 10px;
+
+    line-height: 1.4;
+
+}
+
+
+/* =====================================================
+   ETIQUETAS
+===================================================== */
+
+.card label {
+
     display: block;
 
-    margin-top: 14px;
+    margin-bottom: 7px;
 
-    margin-bottom: 6px;
+    font-size: 11px;
 
-    font-weight: bold;
+    font-weight: 700;
+
 }
 
 
-/* Campos */
+/* =====================================================
+   INPUT CON ICONO
+===================================================== */
 
-input {
+.input-container {
+
+    position: relative;
+
+    margin-bottom: 17px;
+
+}
+
+
+.input-container > i {
+
+    position: absolute;
+
+    left: 14px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #8b99aa;
+
+    pointer-events: none;
+
+}
+
+
+.input-container input {
+
     width: 100%;
 
-    padding: 11px;
+    height: 46px;
+
+    padding:
+        0 42px;
 
     border:
-        1px solid #cbd5e1;
+        1px solid
+        var(--borde);
 
-    border-radius: 7px;
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #fbfdff;
+
+    color: var(--texto);
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+
 }
 
 
-/* Botones */
+.input-container input:hover {
 
-button {
+    border-color: #b9c8d9;
+
+}
+
+
+.input-container input:focus {
+
+    border-color: var(--azul);
+
+    background: white;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(23,105,255,0.08);
+
+}
+
+
+.input-container input::placeholder {
+
+    color: #adb8c7;
+
+}
+
+
+/* =====================================================
+   MOSTRAR CONTRASEÑA
+===================================================== */
+
+.mostrar-password {
+
+    position: absolute;
+
+    right: 12px;
+
+    top: 50%;
+
+    width: auto !important;
+
+    height: auto !important;
+
+    margin: 0 !important;
+
+    padding: 4px !important;
+
+    border: none !important;
+
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    color: #8996a7;
+
+    cursor: pointer;
+
+}
+
+
+.mostrar-password:hover {
+
+    background: transparent !important;
+
+    color: var(--azul);
+
+}
+
+
+/* =====================================================
+   TIPO DE EMPRESA
+===================================================== */
+
+.tipo-empresa {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+
+    margin-bottom: 17px;
+
+}
+
+
+.tipo-btn {
+
+    min-height: 60px;
+
     width: 100%;
 
-    margin-top: 20px;
+    margin: 0;
 
-    padding: 12px;
+    padding: 8px;
 
-    border: none;
+    display: flex;
 
-    border-radius: 7px;
+    align-items: center;
 
-    background: #2563eb;
+    gap: 8px;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius: 10px;
+
+    background: white;
+
+    color: var(--texto);
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.tipo-btn:hover {
+
+    background: #f8fbff;
+
+    border-color: #b7c9df;
+
+    transform: translateY(-1px);
+
+}
+
+
+.tipo-btn i {
+
+    width: 32px;
+
+    height: 32px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #f0f4f9;
+
+    color: #7b899b;
+
+}
+
+
+.tipo-btn span {
+
+    display: block;
+
+}
+
+
+.tipo-btn strong {
+
+    display: block;
+
+    font-size: 10px;
+
+}
+
+
+.tipo-btn small {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: #8c99aa;
+
+    font-size: 8px;
+
+}
+
+
+.tipo-btn.activo {
+
+    border-color: var(--azul);
+
+    background: #f1f6ff;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(23,105,255,0.05);
+
+}
+
+
+.tipo-btn.activo i {
+
+    background: var(--azul);
 
     color: white;
 
-    font-weight: bold;
+}
+
+
+/* =====================================================
+   CONTRASEÑA / ENLACE
+===================================================== */
+
+.label-password {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.label-password label {
+
+    margin-bottom: 7px;
+
+}
+
+
+.label-password a {
+
+    margin-bottom: 7px;
+
+    color: var(--azul);
+
+    font-size: 9px;
+
+    text-decoration: none;
+
+}
+
+
+.label-password a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* =====================================================
+   RECORDAR
+===================================================== */
+
+.recordar {
+
+    display: flex !important;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin:
+        2px 0 18px;
+
+    color: #748196;
+
+    font-weight: 400 !important;
+
+}
+
+
+.recordar input {
+
+    width: auto;
+
+    margin: 0;
+
+    accent-color: var(--azul);
+
+}
+
+
+/* =====================================================
+   BOTÓN PRINCIPAL
+===================================================== */
+
+.boton-principal {
+
+    width: 100%;
+
+    height: 48px;
+
+    margin: 0;
+
+    padding: 0 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #1559ee,
+            #159eea,
+            #00c8ff
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 700;
 
     cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(23,105,255,0.20);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
 }
 
 
-/* Efecto del botón */
+.boton-principal:hover {
 
-button:hover {
-    background: #1d4ed8;
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 13px 25px
+        rgba(23,105,255,0.28);
+
 }
 
 
-/* Área de mensajes */
+.boton-principal:active {
 
-.message {
-    min-height: 24px;
+    transform: translateY(0);
 
-    margin-top: 16px;
+}
 
-    padding: 10px;
 
-    border-radius: 6px;
+/* =====================================================
+   CAMBIAR LOGIN / REGISTRO
+===================================================== */
+
+.cambiar-formulario {
+
+    margin-top: 20px;
+
+    color: var(--texto-secundario);
+
+    font-size: 10px;
 
     text-align: center;
 
-    font-weight: bold;
 }
 
 
-/* Mensaje exitoso */
+.cambiar-formulario button {
+
+    width: auto;
+
+    margin: 0;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--azul);
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+
+.cambiar-formulario button:hover {
+
+    background: transparent;
+
+    text-decoration: underline;
+
+}
+
+
+/* =====================================================
+   MENSAJES
+===================================================== */
+
+.message {
+
+    display: none;
+
+    min-height: 0;
+
+    margin-top: 12px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    text-align: center;
+
+}
+
 
 .message.success {
-    background: #dcfce7;
 
-    color: #166534;
+    display: block;
+
+    background: #e7f8f1;
+
+    color: var(--verde);
+
+    border:
+        1px solid
+        #c5efdf;
+
 }
 
-
-/* Mensaje de error */
 
 .message.error {
-    background: #fee2e2;
 
-    color: #991b1b;
+    display: block;
+
+    background: #ffeded;
+
+    color: var(--rojo);
+
+    border:
+        1px solid
+        #ffd0d0;
+
 }
 
 
-/* Adaptación para celulares */
+/* =====================================================
+   ANIMACIÓN DE ENTRADA
+===================================================== */
+
+.panel-marca {
+
+    animation:
+        aparecerIzquierda
+        0.7s ease both;
+
+}
+
+
+.card {
+
+    animation:
+        aparecerArriba
+        0.7s ease both;
+
+}
+
+
+@keyframes aparecerIzquierda {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(-25px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(0);
+
+    }
+
+}
+
+
+@keyframes aparecerArriba {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   ESTADOS DE CARGA
+===================================================== */
+
+.boton-principal.cargando {
+
+    opacity: 0.75;
+
+    cursor: wait;
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .contenedor {
+
+        width: 94%;
+
+    }
+
+
+    .panel-formularios {
+
+        padding: 30px;
+
+        gap: 15px;
+
+    }
+
+
+    .panel-marca {
+
+        padding: 45px;
+
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    .contenedor {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .panel-marca {
+
+        padding: 40px;
+
+    }
+
+
+    .panel-formularios {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        padding: 35px;
+
+    }
+
+}
+
 
 @media (max-width: 700px) {
 
-    .grid {
+    .contenedor {
+
+        width: 94%;
+
+        margin: 20px auto;
+
+        border-radius: 20px;
+
+    }
+
+
+    .panel-marca {
+
+        padding: 35px 25px;
+
+    }
+
+
+    .logo {
+
+        margin-bottom: 30px;
+
+        font-size: 42px;
+
+    }
+
+
+    .panel-marca h1 {
+
+        font-size: 24px;
+
+    }
+
+
+    .panel-formularios {
+
         grid-template-columns: 1fr;
+
+        padding: 25px;
+
+    }
+
+
+    .card {
+
+        padding: 24px;
+
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .panel-marca {
+
+        padding: 30px 20px;
+
+    }
+
+
+    .panel-formularios {
+
+        padding: 18px;
+
+    }
+
+
+    .tipo-empresa {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .titulo-formulario h2 {
+
+        font-size: 17px;
+
     }
 
 }

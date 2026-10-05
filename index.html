@@ -2,129 +2,630 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Login y Registro</title>
+    <meta name="description"
+          content="INVEX - Plataforma B2B que conecta proveedores y distribuidores">
 
-    <link rel="stylesheet" href="styles.css">
+    <title>INVEX | Conectando negocios</title>
+
+
+    <!-- ==============================
+         FUENTE
+    =============================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <!-- ==============================
+         ICONOS
+    =============================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- ==============================
+         CSS
+    =============================== -->
+
+    <link rel="stylesheet"
+          href="styles.css">
+
 </head>
+
 
 <body>
 
+
+    <!-- =====================================
+         FONDO DECORATIVO
+    ====================================== -->
+
+    <div class="background">
+
+        <div class="background-circle circle-one"></div>
+
+        <div class="background-circle circle-two"></div>
+
+        <div class="background-circle circle-three"></div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         CONTENEDOR PRINCIPAL
+    ====================================== -->
+
     <main class="contenedor">
 
-        <h1>Sistema de Login y Registro</h1>
 
-        <p class="descripcion">
-            Evidencia GA7-220501096-AA5-EV01
-        </p>
+        <!-- =================================
+             PANEL IZQUIERDO
+        ================================== -->
 
-        <section class="grid">
+        <section class="panel-marca">
 
-            <!-- FORMULARIO DE REGISTRO -->
 
-            <div class="card">
+            <!-- LOGO -->
 
-                <h2>Registro</h2>
+            <div class="logo">
+
+                <span>INV</span><strong>EX</strong>
+
+            </div>
+
+
+            <h1>
+
+                Conectando negocios,
+                <br>
+
+                <span>impulsando el crecimiento.</span>
+
+            </h1>
+
+
+            <p class="descripcion">
+
+                INVEX es una plataforma B2B diseñada
+                para conectar proveedores y distribuidores,
+                facilitando nuevas oportunidades comerciales.
+
+            </p>
+
+
+            <!-- BENEFICIOS -->
+
+            <div class="beneficios">
+
+
+                <div class="beneficio">
+
+                    <div class="icono-beneficio">
+
+                        <i class="fa-solid fa-link"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Conexiones comerciales
+                        </strong>
+
+                        <span>
+                            Encuentra nuevos socios de negocio.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="beneficio">
+
+                    <div class="icono-beneficio">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Negocios seguros
+                        </strong>
+
+                        <span>
+                            Conecta con empresas y oportunidades.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="beneficio">
+
+                    <div class="icono-beneficio">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Crecimiento empresarial
+                        </strong>
+
+                        <span>
+                            Amplía tu red comercial.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="beneficio">
+
+                    <div class="icono-beneficio">
+
+                        <i class="fa-solid fa-handshake"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Red B2B
+                        </strong>
+
+                        <span>
+                            Proveedores y distribuidores conectados.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="mensaje-marca">
+
+                Tu próximo gran negocio
+                <strong>
+                    puede comenzar aquí.
+                </strong>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================
+             PANEL DERECHO
+        ================================== -->
+
+        <section class="panel-formularios">
+
+
+            <!-- =================================
+                 REGISTRO
+            ================================== -->
+
+            <div class="card formulario-registro">
+
+
+                <div class="titulo-formulario">
+
+                    <div class="icono-formulario">
+
+                        <i class="fa-solid fa-building"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Crear cuenta
+                        </h2>
+
+                        <p>
+                            Únete a la red empresarial INVEX
+                        </p>
+
+                    </div>
+
+                </div>
+
 
                 <form id="registerForm">
 
-                    <label for="nombre">
-                        Nombre
+
+                    <!-- TIPO DE EMPRESA -->
+
+                    <label>
+                        Tipo de empresa
                     </label>
 
+
+                    <div class="tipo-empresa">
+
+
+                        <button
+                            type="button"
+                            class="tipo-btn activo"
+                            data-tipo="Proveedor">
+
+                            <i class="fa-solid fa-box-open"></i>
+
+                            <span>
+
+                                <strong>
+                                    Proveedor
+                                </strong>
+
+                                <small>
+                                    Ofrezco productos
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+
+                        <button
+                            type="button"
+                            class="tipo-btn"
+                            data-tipo="Distribuidor">
+
+                            <i class="fa-solid fa-store"></i>
+
+                            <span>
+
+                                <strong>
+                                    Distribuidor
+                                </strong>
+
+                                <small>
+                                    Busco proveedores
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+                    </div>
+
+
                     <input
-                        type="text"
-                        id="nombre"
-                        name="nombre"
-                        required
-                    >
+                        type="hidden"
+                        id="tipoEmpresa"
+                        value="Proveedor">
+
+
+
+                    <!-- NOMBRE -->
+
+                    <label for="nombre">
+
+                        Nombre de la empresa
+
+                    </label>
+
+
+                    <div class="input-container">
+
+                        <i class="fa-solid fa-building"></i>
+
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="Ej. Distribuidora del Norte"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- CORREO -->
 
                     <label for="registroCorreo">
-                        Correo
+
+                        Correo electrónico
+
                     </label>
 
-                    <input
-                        type="email"
-                        id="registroCorreo"
-                        name="correo"
-                        required
-                    >
+
+                    <div class="input-container">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="registroCorreo"
+                            name="correo"
+                            placeholder="empresa@correo.com"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- PASSWORD -->
 
                     <label for="registroPassword">
+
                         Contraseña
+
                     </label>
 
-                    <input
-                        type="password"
-                        id="registroPassword"
-                        name="password"
-                        required
-                    >
 
-                    <button type="submit">
-                        Registrarse
+                    <div class="input-container">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="registroPassword"
+                            name="password"
+                            placeholder="Crea una contraseña segura"
+                            minlength="6"
+                            required>
+
+
+                        <button
+                            type="button"
+                            class="mostrar-password"
+                            data-target="registroPassword">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- BOTÓN -->
+
+                    <button
+                        type="submit"
+                        class="boton-principal">
+
+                        <span>
+                            Crear mi cuenta
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
                     </button>
 
+
                 </form>
+
 
                 <div
                     id="registerMessage"
                     class="message">
                 </div>
 
+
+                <p class="cambiar-formulario">
+
+                    ¿Ya tienes una cuenta?
+
+                    <button
+                        type="button"
+                        id="mostrarLogin">
+
+                        Inicia sesión
+
+                    </button>
+
+                </p>
+
+
             </div>
 
 
-            <!-- FORMULARIO DE LOGIN -->
 
-            <div class="card">
+            <!-- =================================
+                 LOGIN
+            ================================== -->
 
-                <h2>Inicio de sesión</h2>
+            <div class="card formulario-login">
+
+
+                <div class="titulo-formulario">
+
+                    <div class="icono-formulario">
+
+                        <i class="fa-solid fa-right-to-bracket"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Bienvenido de nuevo
+                        </h2>
+
+                        <p>
+                            Ingresa a tu cuenta INVEX
+                        </p>
+
+                    </div>
+
+                </div>
+
 
                 <form id="loginForm">
 
+
+                    <!-- CORREO -->
+
                     <label for="loginCorreo">
-                        Correo
+
+                        Correo electrónico
+
                     </label>
 
-                    <input
-                        type="email"
-                        id="loginCorreo"
-                        name="correo"
-                        required
-                    >
 
-                    <label for="loginPassword">
-                        Contraseña
+                    <div class="input-container">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="loginCorreo"
+                            name="correo"
+                            placeholder="tu@empresa.com"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="label-password">
+
+                        <label for="loginPassword">
+
+                            Contraseña
+
+                        </label>
+
+
+                        <a href="#"
+                           id="recuperarPassword">
+
+                            ¿Olvidaste tu contraseña?
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="input-container">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            name="password"
+                            placeholder="Ingresa tu contraseña"
+                            required>
+
+
+                        <button
+                            type="button"
+                            class="mostrar-password"
+                            data-target="loginPassword">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- RECORDAR -->
+
+                    <label class="recordar">
+
+                        <input
+                            type="checkbox"
+                            id="recordar">
+
+                        <span>
+                            Recordarme
+                        </span>
+
                     </label>
 
-                    <input
-                        type="password"
-                        id="loginPassword"
-                        name="password"
-                        required
-                    >
 
-                    <button type="submit">
-                        Iniciar sesión
+
+                    <!-- BOTÓN -->
+
+                    <button
+                        type="submit"
+                        class="boton-principal">
+
+                        <span>
+                            Iniciar sesión
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
                     </button>
 
+
                 </form>
+
 
                 <div
                     id="loginMessage"
                     class="message">
                 </div>
 
+
+                <p class="cambiar-formulario">
+
+                    ¿No tienes una cuenta?
+
+                    <button
+                        type="button"
+                        id="mostrarRegistro">
+
+                        Regístrate aquí
+
+                    </button>
+
+                </p>
+
+
             </div>
+
 
         </section>
 
+
     </main>
+
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
 
     <script src="script.js"></script>
 
