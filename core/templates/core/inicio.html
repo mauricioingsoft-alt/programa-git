@@ -1,0 +1,162 @@
+{% extends 'core/base.html' %}
+
+{% block title %}INVEX | Inicio{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            <span class="status-dot"></span>
+            TECNOLOGÍA · INNOVACIÓN · GESTIÓN
+        </div>
+
+        <h1>
+            Lleva tus ideas<br>
+            al siguiente <span>nivel.</span>
+        </h1>
+
+        <p class="hero-description">
+            INVEX es un espacio digital diseñado para impulsar
+            la organización, optimizar procesos y convertir
+            tus objetivos en resultados.
+        </p>
+
+        <div class="hero-actions">
+            {% if user.is_authenticated %}
+                <a href="{% url 'panel' %}" class="btn-primary">
+                    Ir a mi panel <span>↗</span>
+                </a>
+            {% else %}
+                <a href="{% url 'registro' %}" class="btn-primary">
+                    Comenzar ahora <span>↗</span>
+                </a>
+
+                <a href="{% url 'login' %}" class="btn-secondary">
+                    Ya tengo una cuenta
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="hero-stats">
+            <div>
+                <strong>01</strong>
+                <span>Organización</span>
+            </div>
+
+            <div>
+                <strong>02</strong>
+                <span>Productividad</span>
+            </div>
+
+            <div>
+                <strong>03</strong>
+                <span>Innovación</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="hero-visual">
+
+        <div class="visual-glow"></div>
+
+        <div class="visual-card visual-card-main">
+            <div class="visual-top">
+                <div>
+                    <span class="visual-label">INVEX PLATFORM</span>
+                    <h3>Control inteligente</h3>
+                </div>
+
+                <span class="visual-indicator">●</span>
+            </div>
+
+            <div class="visual-chart">
+                <div class="chart-line"></div>
+                <div class="chart-bars">
+                    <span style="height: 35%"></span>
+                    <span style="height: 52%"></span>
+                    <span style="height: 43%"></span>
+                    <span style="height: 70%"></span>
+                    <span style="height: 60%"></span>
+                    <span style="height: 88%"></span>
+                    <span style="height: 76%"></span>
+                </div>
+            </div>
+
+            <div class="visual-bottom">
+                <span>Visión estratégica</span>
+                <strong>En tiempo real</strong>
+            </div>
+        </div>
+
+        <div class="floating-card floating-one">
+            <span class="floating-icon">✦</span>
+            <div>
+                <strong>Innovación</strong>
+                <small>Ideas que evolucionan</small>
+            </div>
+        </div>
+
+        <div class="floating-card floating-two">
+            <span class="floating-icon">↗</span>
+            <div>
+                <strong>Progreso</strong>
+                <small>Avanza con propósito</small>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="features-section">
+
+    <div class="section-heading">
+        <span class="section-tag">EL ECOSISTEMA INVEX</span>
+        <h2>Todo comienza con una mejor visión.</h2>
+        <p>Una plataforma pensada para organizar, administrar y avanzar.</p>
+    </div>
+
+    <div class="features-grid">
+
+        <article class="feature-card">
+            <div class="feature-icon">⌘</div>
+            <span class="feature-number">01 / ORGANIZACIÓN</span>
+            <h3>Control centralizado</h3>
+            <p>Accede a tu espacio de trabajo desde un solo lugar.</p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon">✧</div>
+            <span class="feature-number">02 / INNOVACIÓN</span>
+            <h3>Experiencia moderna</h3>
+            <p>Una interfaz intuitiva diseñada para facilitar tus actividades.</p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon">↗</div>
+            <span class="feature-number">03 / CRECIMIENTO</span>
+            <h3>Avance continuo</h3>
+            <p>Construye una mejor forma de trabajar y alcanzar tus objetivos.</p>
+        </article>
+
+    </div>
+
+</section>
+
+<section class="cta-section">
+    <span class="section-tag">TU SIGUIENTE PASO</span>
+    <h2>El futuro de tu gestión comienza aquí.</h2>
+    <p>Ingresa a INVEX y descubre una nueva experiencia digital.</p>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'panel' %}" class="btn-primary">Entrar a INVEX ↗</a>
+    {% else %}
+        <a href="{% url 'registro' %}" class="btn-primary">Crear mi cuenta ↗</a>
+    {% endif %}
+</section>
+
+{% endblock %}

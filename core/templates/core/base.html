@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}INVEX{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'core/estilos.css' %}?v=10">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="{% url 'inicio' %}" class="logo">
+            <span class="logo-icon">I</span>
+            <span>INVEX</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="{% url 'inicio' %}">Inicio</a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'panel' %}">Mi panel</a>
+
+                <form action="{% url 'cerrar_sesion' %}" method="POST" class="nav-form">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-button">Cerrar sesión</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Iniciar sesión</a>
+                <a href="{% url 'registro' %}" class="nav-register">Crear cuenta</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    {% if messages %}
+        <div class="messages-container">
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">INVEX</div>
+        <p>Soluciones inteligentes para una nueva forma de gestionar.</p>
+        <span>© 2026 INVEX. Todos los derechos reservados.</span>
+    </footer>
+
+</body>
+</html>

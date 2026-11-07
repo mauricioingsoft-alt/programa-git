@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Mi panel | INVEX{% endblock %}
+
+{% block content %}
+
+<section class="dashboard">
+
+    <div class="dashboard-welcome">
+        <span class="section-tag">PANEL DE CONTROL</span>
+
+        <h1>
+            Hola, <span>{{ user.username }}</span>.
+        </h1>
+
+        <p>Bienvenido a tu espacio de trabajo INVEX.</p>
+    </div>
+
+    <div class="dashboard-grid">
+
+        <article class="dashboard-card dashboard-main-card">
+            <div class="dashboard-card-icon">⌘</div>
+            <span>01 / TU ESPACIO</span>
+            <h2>Centro de operaciones</h2>
+            <p>Desde aquí podrás acceder a las herramientas y funcionalidades de INVEX.</p>
+            <div class="coming-soon">MÓDULO EN DESARROLLO</div>
+        </article>
+
+        <article class="dashboard-card">
+            <div class="dashboard-card-icon">✧</div>
+            <span>02 / PERFIL</span>
+            <h2>Mi cuenta</h2>
+            <p>Tu usuario: {{ user.username }}</p>
+            <p>Correo: {{ user.email|default:"No registrado" }}</p>
+        </article>
+
+        <article class="dashboard-card">
+            <div class="dashboard-card-icon">↗</div>
+            <span>03 / PLATAFORMA</span>
+            <h2>Tu progreso</h2>
+            <p>Tu espacio INVEX está listo para seguir creciendo.</p>
+        </article>
+
+    </div>
+
+    <form method="POST" action="{% url 'cerrar_sesion' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn-secondary">
+            Cerrar sesión
+        </button>
+    </form>
+
+</section>
+
+{% endblock %}

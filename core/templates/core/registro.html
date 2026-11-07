@@ -1,0 +1,117 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Crear cuenta | INVEX{% endblock %}
+
+{% block content %}
+
+<section class="auth-section">
+
+    <div class="auth-visual register-visual">
+        <div class="auth-visual-content">
+            <span class="section-tag">ÚNETE A INVEX</span>
+
+            <h1>
+                Las grandes<br>
+                ideas comienzan<br>
+                <span>con un paso.</span>
+            </h1>
+
+            <p>
+                Crea tu cuenta y comienza una nueva experiencia
+                de organización y productividad.
+            </p>
+
+            <div class="auth-decoration">
+                <div class="decoration-circle"></div>
+                <div class="decoration-circle circle-two"></div>
+                <div class="decoration-circle circle-three"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="auth-form-side">
+
+        <div class="auth-card">
+
+            <div class="auth-heading">
+                <span class="section-tag">NUEVA CUENTA</span>
+                <h2>Crear cuenta</h2>
+                <p>Completa tus datos para comenzar.</p>
+            </div>
+
+            <form method="POST" class="auth-form">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="username">Nombre de usuario</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Elige un nombre de usuario"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="ejemplo@correo.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Mínimo 8 caracteres"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password2">Confirmar contraseña</label>
+                    <input
+                        type="password"
+                        id="password2"
+                        name="password2"
+                        placeholder="Repite tu contraseña"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn-primary btn-full">
+                    Crear mi cuenta <span>↗</span>
+                </button>
+
+            </form>
+
+            <div class="auth-divider">
+                <span>¿Ya tienes una cuenta?</span>
+            </div>
+
+            <a href="{% url 'login' %}" class="auth-link">
+                Iniciar sesión
+            </a>
+
+            <a href="{% url 'inicio' %}" class="back-link">
+                ← Volver al inicio
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

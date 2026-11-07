@@ -1,0 +1,92 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Iniciar sesión | INVEX{% endblock %}
+
+{% block content %}
+
+<section class="auth-section">
+
+    <div class="auth-visual login-visual">
+        <div class="auth-visual-content">
+            <span class="section-tag">BIENVENIDO A INVEX</span>
+
+            <h1>
+                Tu espacio.<br>
+                Tus ideas.<br>
+                <span>Tu progreso.</span>
+            </h1>
+
+            <p>
+                Accede a tu plataforma y continúa construyendo
+                tus objetivos.
+            </p>
+
+            <div class="auth-decoration">
+                <div class="decoration-circle"></div>
+                <div class="decoration-circle circle-two"></div>
+                <div class="decoration-circle circle-three"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="auth-form-side">
+
+        <div class="auth-card">
+
+            <div class="auth-heading">
+                <span class="section-tag">ACCESO A LA PLATAFORMA</span>
+                <h2>Iniciar sesión</h2>
+                <p>Ingresa tus datos para continuar.</p>
+            </div>
+
+            <form method="POST" class="auth-form">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="username">Nombre de usuario</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Escribe tu usuario"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Ingresa tu contraseña"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn-primary btn-full">
+                    Entrar a mi cuenta <span>↗</span>
+                </button>
+            </form>
+
+            <div class="auth-divider">
+                <span>¿Aún no tienes cuenta?</span>
+            </div>
+
+            <a href="{% url 'registro' %}" class="auth-link">
+                Crear una cuenta nueva
+            </a>
+
+            <a href="{% url 'inicio' %}" class="back-link">
+                ← Volver al inicio
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

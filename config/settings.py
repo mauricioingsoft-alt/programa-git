@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-oti5(zz8u1(l9rt%w5@k*=p2zol)sxy)k7e$go@k#s^0jd$ekw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    '192.168.1.5',
+    'papaya-excusably-recognize.ngrok-free.dev']
 
 
 # Application definition
@@ -118,6 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
