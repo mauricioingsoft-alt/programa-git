@@ -1,0 +1,408 @@
+
+{% extends 'core/base.html' %}
+{# Utiliza el diseño principal de INVEX. #}
+
+{% block title %}Editar producto | INVEX{% endblock %}
+{# Muestra el título de la página en el navegador. #}
+
+{% block content %}
+{# Inicia el contenido exclusivo de la edición de productos. #}
+
+
+<style>
+
+/* ============================================
+   INVEX - FORMULARIO EDITAR PRODUCTO
+   Diseño minimalista azul oscuro y violeta
+============================================ */
+
+
+/* CONTENEDOR PRINCIPAL */
+
+/* Centra el contenido y limita su ancho. */
+.producto-pagina {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 65px 20px;
+    box-sizing: border-box;
+}
+
+
+/* ENCABEZADO */
+
+/* Identifica el módulo donde estamos trabajando. */
+.producto-subtitulo {
+    display: block;
+    color: #a99cff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Título principal de la página. */
+.producto-titulo {
+    margin: 18px 0 10px;
+    color: #f5f7ff;
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 700;
+}
+
+/* Texto descriptivo debajo del título. */
+.producto-descripcion {
+    margin-bottom: 32px;
+    color: #a5b2cb;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Resalta el nombre del producto. */
+.producto-nombre {
+    color: #b6a8ff;
+    font-weight: 600;
+}
+
+
+/* TARJETA DEL FORMULARIO */
+
+/* Crea el contenedor visual de los campos. */
+.producto-formulario {
+    background: #161f34;
+    border: 1px solid #303b56;
+    border-radius: 16px;
+    padding: 32px;
+}
+
+
+/* ORGANIZACIÓN DE CAMPOS */
+
+/* Distribuye los campos en dos columnas. */
+.producto-campos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+/* Agrupa cada etiqueta con su campo. */
+.producto-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    min-width: 0;
+}
+
+/* Permite que algunos campos ocupen ambas columnas. */
+.producto-campo-ancho {
+    grid-column: 1 / -1;
+}
+
+
+/* ETIQUETAS */
+
+/* Personaliza los nombres visibles de los campos. */
+.producto-campo label {
+    color: #e0e6f7;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* CAMPOS DEL FORMULARIO */
+
+/* Aplica estilos a los campos generados por Django. */
+.producto-campo input,
+.producto-campo textarea,
+.producto-campo select {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 13px 15px;
+
+    background: #0f1729;
+    color: #f5f7ff;
+
+    border: 1px solid #3a4661;
+    border-radius: 9px;
+
+    font: inherit;
+    font-size: 14px;
+
+    outline: none;
+}
+
+/* Ajusta el tamaño del campo de descripción. */
+.producto-campo textarea {
+    min-height: 110px;
+    max-height: 220px;
+    resize: vertical;
+}
+
+/* Destaca el campo que está utilizando el usuario. */
+.producto-campo input:focus,
+.producto-campo textarea:focus,
+.producto-campo select:focus {
+    border-color: #9283f9;
+
+    box-shadow: 0 0 0 3px
+        rgba(146, 131, 249, 0.12);
+}
+
+
+/* MENSAJES DE ERROR */
+
+/* Muestra errores de validación en rojo suave. */
+.producto-error {
+    margin: 4px 0;
+    color: #ffadb7;
+    font-size: 12px;
+}
+
+
+/* BOTONES DEL FORMULARIO */
+
+/* Coloca los botones en la parte inferior derecha. */
+.producto-acciones {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    gap: 16px;
+    margin-top: 32px;
+}
+
+/* Estilo del enlace Cancelar. */
+.producto-cancelar {
+    color: #aab7d2;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/* Efecto al pasar el mouse sobre Cancelar. */
+.producto-cancelar:hover {
+    color: #ffffff;
+}
+
+/* Botón principal para guardar cambios. */
+.producto-guardar {
+    padding: 13px 22px;
+
+    background: #6554c7;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+/* Cambia el color del botón al pasar el mouse. */
+.producto-guardar:hover {
+    background: #7868df;
+}
+
+/* Mejora el uso del botón mediante teclado. */
+.producto-guardar:focus-visible {
+    outline: 2px solid #c4b5fd;
+    outline-offset: 3px;
+}
+
+
+/* DISEÑO RESPONSIVO */
+
+/* Organiza los campos en una columna para celulares. */
+@media (max-width: 600px) {
+
+    .producto-pagina {
+        padding: 40px 16px;
+    }
+
+    .producto-formulario {
+        padding: 22px 18px;
+    }
+
+    .producto-campos {
+        grid-template-columns: 1fr;
+    }
+
+    .producto-campo-ancho {
+        grid-column: auto;
+    }
+
+    .producto-acciones {
+        justify-content: flex-start;
+    }
+}
+
+</style>
+
+
+<!-- ==========================================
+     PÁGINA PRINCIPAL DE EDICIÓN
+========================================== -->
+
+<section class="producto-pagina">
+
+
+    <!-- ENCABEZADO -->
+    <header>
+
+        <!-- Identifica el módulo de INVEX. -->
+        <span class="producto-subtitulo">
+            GESTIÓN DE INVENTARIOS
+        </span>
+
+        <!-- Título principal. -->
+        <h1 class="producto-titulo">
+            Editar producto
+        </h1>
+
+        <!-- Muestra el nombre del producto seleccionado. -->
+        <p class="producto-descripcion">
+
+            Estás modificando:
+
+            <span class="producto-nombre">
+                {{ producto.nombre }}
+            </span>
+
+            Actualiza la información y guarda los cambios.
+
+        </p>
+
+    </header>
+
+
+    <!-- ======================================
+         FORMULARIO DE EDICIÓN
+    ======================================= -->
+
+    <!--
+        POST envía la información modificada
+        a la función editar_producto() en views.py.
+    -->
+    <form method="POST" class="producto-formulario">
+
+
+        <!-- Protección de seguridad contra ataques CSRF. -->
+        {% csrf_token %}
+
+
+        <!-- ERRORES GENERALES DEL FORMULARIO -->
+        {% for error in form.non_field_errors %}
+
+            <p class="producto-error">
+                {{ error }}
+            </p>
+
+        {% endfor %}
+
+
+        <!-- CONTENEDOR DE LOS CAMPOS -->
+        <div class="producto-campos">
+
+
+            <!--
+                Recorre los campos de ProductoForm.
+
+                Django muestra automáticamente los
+                valores actuales porque la vista utiliza:
+
+                ProductoForm(instance=producto)
+            -->
+            {% for campo in form %}
+
+
+                <!--
+                    Nombre y descripción ocupan todo el ancho.
+
+                    Precio y cantidad se distribuyen
+                    en dos columnas.
+                -->
+                <div class="producto-campo
+                    {% if campo.name == 'nombre' or campo.name == 'descripcion' %}
+                        producto-campo-ancho
+                    {% endif %}
+                ">
+
+
+                    <!-- Muestra la etiqueta del campo. -->
+                    {{ campo.label_tag }}
+
+
+                    <!--
+                        Muestra el input correspondiente
+                        con los datos actuales del producto.
+                    -->
+                    {{ campo }}
+
+
+                    <!-- ERRORES ESPECÍFICOS DEL CAMPO -->
+                    {% for error in campo.errors %}
+
+                        <p class="producto-error">
+                            {{ error }}
+                        </p>
+
+                    {% endfor %}
+
+
+                </div>
+
+
+            {% endfor %}
+            {# Finaliza el recorrido de los campos. #}
+
+
+        </div>
+
+
+        <!-- ==================================
+             ACCIONES DEL FORMULARIO
+        =================================== -->
+
+        <div class="producto-acciones">
+
+
+            <!--
+                Permite regresar al inventario
+                sin guardar las modificaciones.
+            -->
+            <a href="{% url 'inventario' %}"
+               class="producto-cancelar">
+
+                Cancelar
+
+            </a>
+
+
+            <!--
+                Envía los cambios a Django para
+                actualizar el producto en SQLite.
+            -->
+            <button type="submit"
+                    class="producto-guardar">
+
+                Guardar cambios
+
+            </button>
+
+
+        </div>
+
+
+    </form>
+    <!-- FIN DEL FORMULARIO -->
+
+
+</section>
+<!-- FIN DE LA PÁGINA DE EDICIÓN -->
+
+
+{% endblock %}
+{# Finaliza el contenido de editar_producto.html. #}

@@ -1,0 +1,242 @@
+
+{% extends 'core/base.html' %}
+{# Hereda el diseño, navegación y estructura principal de INVEX. #}
+
+{% block title %}Nuevo producto | INVEX{% endblock %}
+{# Define el título de la pestaña del navegador. #}
+
+{% block content %}
+{# Inicia el contenido exclusivo de esta página. #}
+
+<style>
+/* ===== FORMULARIO DE PRODUCTOS INVEX ===== */
+
+/* Contenedor principal del formulario. */
+.producto-pagina {
+    max-width: 900px; /* Evita que el formulario sea demasiado ancho. */
+    margin: 0 auto; /* Centra el formulario horizontalmente. */
+    padding: 65px 20px; /* Da espacio alrededor del contenido. */
+}
+
+/* Texto de orientación superior. */
+.producto-subtitulo {
+    color: #a99cff; /* Violeta característico de INVEX. */
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Título principal de la página. */
+.producto-titulo {
+    margin: 18px 0 10px;
+    color: #f5f7ff;
+    font-size: clamp(26px, 4vw, 36px);
+}
+
+/* Descripción debajo del título. */
+.producto-descripcion {
+    color: #a5b2cb;
+    font-size: 14px;
+    margin-bottom: 32px;
+}
+
+/* Tarjeta que contiene los campos del formulario. */
+.producto-formulario {
+    background: #161f34;
+    border: 1px solid #303b56;
+    border-radius: 16px;
+    padding: 32px;
+}
+
+/* Organiza los campos en dos columnas. */
+.producto-campos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+/* Agrupa cada etiqueta y su campo. */
+.producto-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    min-width: 0;
+}
+
+/* Permite ocupar ambas columnas. */
+.producto-campo-ancho {
+    grid-column: 1 / -1;
+}
+
+/* Da formato a las etiquetas de cada campo. */
+.producto-campo label {
+    color: #e0e6f7;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Personaliza los campos generados por Django. */
+.producto-campo input,
+.producto-campo textarea,
+.producto-campo select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+    border-radius: 9px;
+    border: 1px solid #3a4661;
+    background: #0f1729;
+    color: #f5f7ff;
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+/* Establece una altura inicial para la descripción. */
+.producto-campo textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Destaca el campo seleccionado por el usuario. */
+.producto-campo input:focus,
+.producto-campo textarea:focus,
+.producto-campo select:focus {
+    border-color: #9283f9;
+    box-shadow: 0 0 0 3px rgba(146, 131, 249, 0.12);
+}
+
+/* Muestra los errores de validación del formulario. */
+.producto-error {
+    color: #ffadb7;
+    font-size: 12px;
+    margin: 3px 0;
+}
+
+/* Contenedor para los botones. */
+.producto-acciones {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+/* Estilo del botón para regresar al inventario. */
+.producto-cancelar {
+    color: #aab7d2;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Botón principal para guardar el producto. */
+.producto-guardar {
+    background: #6554c7;
+    color: #ffffff;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Efecto visual del botón al pasar el mouse. */
+.producto-guardar:hover {
+    background: #7868df;
+}
+
+/* Adapta el formulario para dispositivos móviles. */
+@media (max-width: 600px) {
+    .producto-formulario {
+        padding: 22px 18px;
+    }
+
+    .producto-campos {
+        grid-template-columns: 1fr;
+    }
+
+    .producto-campo-ancho {
+        grid-column: auto;
+    }
+}
+</style>
+
+
+<!-- CONTENEDOR PRINCIPAL -->
+<section class="producto-pagina">
+
+    <!-- Encabezado del módulo. -->
+    <div>
+        <span class="producto-subtitulo">
+            GESTIÓN DE INVENTARIOS
+        </span>
+
+        <h1 class="producto-titulo">Registrar producto</h1>
+
+        <p class="producto-descripcion">
+            Completa la información para agregar un producto
+            a tu inventario.
+        </p>
+    </div>
+
+    <!-- FORMULARIO DE REGISTRO -->
+    <!-- method="POST" permite enviar información al servidor. -->
+    <form method="POST" class="producto-formulario">
+
+        {% csrf_token %}
+        {# Protege el formulario contra solicitudes CSRF. #}
+
+        <!-- Muestra errores generales del formulario. -->
+        {% for error in form.non_field_errors %}
+            <p class="producto-error">{{ error }}</p>
+        {% endfor %}
+
+        <!-- Organiza los campos en una cuadrícula. -->
+        <div class="producto-campos">
+
+            {% for campo in form %}
+            {# Recorre los campos definidos en ProductoForm. #}
+
+                <div class="producto-campo {% if campo.name == 'nombre' or campo.name == 'descripcion' %}producto-campo-ancho{% endif %}">
+
+                    <!-- Muestra el nombre visible del campo. -->
+                    {{ campo.label_tag }}
+
+                    <!-- Dibuja el campo de entrada. -->
+                    {{ campo }}
+
+                    <!-- Muestra errores de validación específicos. -->
+                    {% for error in campo.errors %}
+                        <p class="producto-error">
+                            {{ error }}
+                        </p>
+                    {% endfor %}
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        <!-- BOTONES DEL FORMULARIO -->
+        <div class="producto-acciones">
+
+            <!-- Regresa al inventario sin registrar datos. -->
+            <a href="{% url 'inventario' %}"
+               class="producto-cancelar">
+                Cancelar
+            </a>
+
+            <!-- Envía el formulario a la vista Django. -->
+            <button type="submit" class="producto-guardar">
+                Guardar producto
+            </button>
+
+        </div>
+
+    </form>
+
+</section>
+
+{% endblock %}
+{# Finaliza el contenido del formulario. #}

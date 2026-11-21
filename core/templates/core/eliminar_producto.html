@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Eliminar producto | INVEX</title>
+
+    <style>
+        /* Fondo principal de INVEX */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #0d1021;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+        }
+
+        /* Tarjeta de confirmacion */
+        .tarjeta {
+            width: 100%;
+            max-width: 520px;
+            padding: 35px;
+            background: #191d35;
+            border: 1px solid #323855;
+            border-radius: 18px;
+            box-shadow: 0 15px 45px
+                        rgba(0, 0, 0, 0.35);
+        }
+
+        .marca {
+            color: #a995ff;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0 0 15px;
+            font-size: 27px;
+            color: #ffffff;
+        }
+
+        .advertencia {
+            color: #ffaaa9;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        /* Informacion del producto */
+        .producto {
+            padding: 20px;
+            border-radius: 12px;
+            background: #11162a;
+            border: 1px solid #323855;
+            margin-bottom: 25px;
+        }
+
+        .producto h2 {
+            font-size: 20px;
+            margin: 0 0 12px;
+        }
+
+        .producto p {
+            color: #bfc5d9;
+            margin: 8px 0;
+        }
+
+        .acciones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        /* Boton de eliminacion definitiva */
+        .btn-eliminar {
+            flex: 1;
+            background: #a83243;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            padding: 14px 18px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-eliminar:hover {
+            background: #c23f52;
+        }
+
+        /* Boton para cancelar */
+        .btn-cancelar {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #343957;
+            border-radius: 9px;
+            padding: 14px 18px;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .btn-cancelar:hover {
+            background: #484f73;
+        }
+
+        @media (max-width: 420px) {
+            .acciones {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="tarjeta">
+
+        <!-- Identidad visual del sistema -->
+        <div class="marca">INVEX PRO</div>
+
+        <h1>Eliminar producto</h1>
+
+        <!-- Explicamos el riesgo al usuario -->
+        <p class="advertencia">
+            ¿Estás seguro de que deseas eliminar
+            este producto del inventario?
+            Esta acción no se puede deshacer.
+        </p>
+
+        <!-- Mostramos el producto seleccionado -->
+        <section class="producto">
+
+            <h2>{{ producto.nombre }}</h2>
+
+            <p>
+                <strong>Descripción:</strong>
+                {{ producto.descripcion|default:"Sin descripción" }}
+            </p>
+
+            <p>
+                <strong>Precio:</strong>
+                ${{ producto.precio|floatformat:2 }}
+            </p>
+
+            <p>
+                <strong>Existencias:</strong>
+                {{ producto.cantidad }}
+            </p>
+
+        </section>
+
+        <!--
+        El formulario utiliza POST.
+        Así, visitar esta página no elimina nada.
+        -->
+        <div class="acciones">
+
+            <form
+                method="POST"
+                action="{% url 'eliminar_producto' producto.id %}"
+                style="flex: 1; display: flex;"
+            >
+
+                <!-- Protección CSRF de Django -->
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    class="btn-eliminar"
+                >
+                    Eliminar definitivamente
+                </button>
+
+            </form>
+
+            <!-- Regresar sin eliminar -->
+            <a
+                href="{% url 'inventario' %}"
+                class="btn-cancelar"
+            >
+                Cancelar
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
