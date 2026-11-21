@@ -377,4 +377,3 @@ class PruebasInventario(TestCase):
                 id=producto.id
             ).exists()
         )
-        
